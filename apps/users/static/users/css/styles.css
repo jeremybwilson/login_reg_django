@@ -1,0 +1,52 @@
+
+h1, h2, h3, h4, h5, p, form, button {
+    display:block;
+    width: 100%;
+}
+
+.col-3, .col-4, .col-8, .col-9 {
+    padding: 0;
+    display: inline-block;
+    width: auto;
+    vertical-align: top;
+}
+
+.form-group label, .form-group input {
+    display: block;
+    width: auto;
+    margin-right: 0;
+}
+
+.form-group input {
+    width: 300px;
+}
+
+.login input {
+    width: 250px;
+}
+
+.btn.btn-primary {
+    margin: 1em 0;
+    width: 200px;
+}
+
+.strong {
+    font-weight: bold;
+}
+
+.datestamp {
+    font-size: 1em;
+    display: inline-block;
+}
+
+.error, .red, p.red, li.red {
+    color: red;
+}
+
+.success, .green, p.green, li.green {
+    color: green;
+}
+
+.gold {
+    color: gold;
+}

@@ -1,0 +1,74 @@
+{% extends './layout.html' %}
+{% block title %}Login Registration{% endblock %}
+
+{% block body %}
+        {% include 'nav.html' %}
+        <div class="row">
+            <h1>Registration</h1>
+        </div>
+        {% if request.session.logged_id != False %}
+        <div class="row">
+            <h1>Welcome {{ user.first_name }} {{ user.last_name }}</h1>
+            <p>Today's date is: {{ todaysDateVariable }}</p>
+            <ul class="gold">
+                <li>Session user_id: {{ request.session.user_id }}</li>
+                <li>Session logged_in: {{ request.session.logged_in }}</li>
+                <li>Session logged_in_status: {{ request.session.logged_in_status }}</li>
+            </ul>
+        </div>
+        {% endif %}
+
+        <div class="row">
+            {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+        </div>
+        <div class="row">
+            <form action="{% url 'users:create' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <div class="col-4">
+                        <label for="first_name">First name: </label>
+                        <label for="last_name">Last name: </label>
+                        <label for="email">Email: </label>
+                        <label for="password">Password: </label>
+                        <label for="confirm_password">Confirm password: </label>
+                    </div>
+                    <div class="col-8">
+                        <input type="text" name="first_name">
+                        <input type="text" name="last_name">
+                        <input type="text" name="email">
+                        <input type="password" name="password">
+                        <input type="password" name="confirm_password">
+                        <button class="btn btn-primary btn-sm" type="submit">Create User</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="row">
+        {% if request.session.logged_in == False %}
+            <form class="login" action="{% url 'users:login' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <div class="col-4">
+                        <label for="email">Email:</label>
+                        <label for="password">Password:</label>
+                    </div>
+                    <div class="col-8">
+                        <input type="email" name="email" width="30">
+                        <input type="password" name="password" width="30">
+                        <button type="submit" class="btn btn-primary btn-sm">Login</button>
+                    </div>
+            </form>
+        {% else %}
+            <form class="customform" action="{% url 'users:logout' %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary btn-sm">Logout</button>
+            </form>     
+        {% endif %}
+        </div>
+{% endblock %}

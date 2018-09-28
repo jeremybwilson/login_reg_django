@@ -1,0 +1,29 @@
+h1, h2, h3, h4, h5, p {
+    display: block;
+    width: 100%;
+}
+
+.strong {
+    font-weight: bold;
+}
+
+.datestamp {
+    font-size: 1em;
+    display: inline-block;
+}
+
+.btn.btn-primary {
+    margin: 1em 0;
+}
+
+.error, .red, p.red {
+    color: red;
+}
+
+.success, .green, p.green {
+    color: green;
+}
+
+.gold, p.gold {
+    color: gold;
+}

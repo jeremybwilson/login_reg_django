@@ -1,0 +1,17 @@
+<div class="row">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="{% url 'users:index' %}">Home </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'users:new' %}">Create User</a>
+            </li>
+            {% if request.session.user_id != '' and request.session.logged_in != False %}
+            <li class="nav-item">
+                <a class="nav-link" href="/users/{{ request.session.user_id }}/show">Show User</a>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>

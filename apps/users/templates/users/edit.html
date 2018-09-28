@@ -1,0 +1,37 @@
+{% extends './layout.html' %}
+{% block title %}Edit User{% endblock %}
+
+{% block body %}
+        {% include 'nav.html' %}
+        <div class="row">
+            <h1>Login Registration</h1>
+        </div>
+        {# if request.session.logged_in != True #}
+        <div class="row">
+            <h2>Edit User {{ user_id }}</h2>
+        </div>
+        <div class="row">
+            <form action="/users/{{ user_id }}/update" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                <input type="hidden" name="user_id" value="{{ user_id }}" />
+                <label for="first_name">First name: </label>
+                <input type="text" name="first_name" value="{{ first_name }}"><br />
+                <label for="last_name">Last name: </label>
+                <input type="text" name="last_name" value="{{ last_name }}"><br />
+                <label for="email">Email: </label>
+                <input type="text" name="email" value="{{ email }}"><br />
+                <label for="permission_level">Permission level: </label>
+                <input type="permission_level" name="permission_level" value="{{ permission_level }}"><br />
+                <button class="btn btn-primary" type="submit">Edit User</button>
+                </div>
+            </form>
+        </div>
+        {# else #}
+        <div class="row">
+            <h1>Welcome {{ request.session.first_name }} {{ request.session.last_name }}</h1>
+            <p>You are already signed in.</p>
+            <a class="btn btn-primary" href="/users/reset" role="button">Sign out</a>
+        </div>
+        {# endif #}
+{% endblock %}

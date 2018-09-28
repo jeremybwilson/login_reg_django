@@ -1,0 +1,18 @@
+{% extends './layout.html' %}
+{% block title %}Create User{% endblock %}
+
+{% block body %}
+        {% include 'nav.html' %}
+        <div class="row">
+            <h3>This page should not be getting used for final Login Registration App</h3>
+        </div>
+        <div class="row">
+            {% if request.session.logged_id != '' %}
+            <h1>Welcome {{ request.session.first_name }} {{ request.session.last_name }}</h1>
+            <p>You are already signed in.</p>
+            <a class="btn btn-primary btn-sm" href="{% url 'users:logout' %}" role="button">Sign out</a>
+            {% else %}
+
+            {% endif %}
+        </div>
+{% endblock %}
