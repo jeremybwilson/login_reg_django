@@ -1,0 +1,26 @@
+{% extends './layout.html' %}
+{% block title %}Show Users{% endblock %}
+
+{% block body %}
+        {% include 'nav.html' %}
+        <div class="row">
+            <h1>Show Users</h1>
+        </div>
+        <div class="row">
+            <div class="col-5 strong">Your Name:</div>
+            <div class="col-4 strong">Email:</div>
+            <div class="col-3 strong">Permission level:</div>
+        </div>
+        {% for user in users %}
+        <div class="row"> 
+            <div class="col-5"><a href="/users/{{ user.id }}/show">{{ user.first_name }} {{ user.last_name }}</a></div>
+            <div class="col-4">{{ user.email }}</div>
+            <div class="col-3">{{ user.permission_level }}</div>
+        </div>
+        {% endfor %}
+        {% if request.session.logged_in != False %}
+        <div class="row">
+            <a class="btn btn-primary btn-sm" href="{% url 'users:logout' %}" role="button">Clear session</a>
+        </div>
+        {% endif %}
+{% endblock %}

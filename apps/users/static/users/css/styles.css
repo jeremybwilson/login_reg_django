@@ -11,6 +11,10 @@ h1, h2, h3, h4, h5, p, form, button {
     vertical-align: top;
 }
 
+.form-group label {
+    padding: 4px 0;
+}
+
 .form-group label, .form-group input {
     display: block;
     width: auto;

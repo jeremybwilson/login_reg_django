@@ -6,9 +6,14 @@
         <div class="row">
             <h1>Success!  Welcome, {{ first_name }}</h1>
         </div>
-        <div class="row">
-            <p class="green">Successfully registered {% if request.session.logged_in == request.session.user_id %}(or logged in){% endif %}!</p>
-        </div>
+        {% if messages %}
+            <div class="row">
+                <!-- <p class="green">Successfully {% if request.session.logged_in == True and request.session.user_id != False %}logged in {% else %} registered {% endif %}!</p> -->
+                {% for message in messages %}
+                <p {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}
         {% for user in users %}
         <div class="row">
             <div class="col-3">Your Name:</div> <div class="col-9">{{ first_name }} {{ last_name }}</div>
